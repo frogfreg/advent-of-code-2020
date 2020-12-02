@@ -1,30 +1,29 @@
 const inputArr = require("./input2.json");
-inputArr.pop();
 
-function checkPassword(passwordString) {
+const checkPassword = (passwordString) => {
   const passwordSections = passwordString.split(" ");
   let [policy, letter, password] = passwordSections;
   letter = letter.replace(":", "");
   const policyLower = parseInt(policy.split("-")[0]);
   const policyUpper = parseInt(policy.split("-")[1]);
+
+  return validatePassword(policyLower, policyUpper, letter, password);
+};
+
+function validatePassword(lower, upper, policyLetter, password) {
   if (
-    countLetters(letter, password) >= policyLower &&
-    countLetters(letter, password) <= policyUpper
+    password[lower - 1] === policyLetter &&
+    password[upper - 1] !== policyLetter
   ) {
     return true;
-  } else {
-    return false;
   }
-}
-
-function countLetters(policyLetter, string) {
-  let counter = 0;
-  for (const letter of string) {
-    if (letter === policyLetter) {
-      counter += 1;
-    }
+  if (
+    password[upper - 1] === policyLetter &&
+    password[lower - 1] !== policyLetter
+  ) {
+    return true;
   }
-  return counter;
+  return false;
 }
 
 const count = inputArr.reduce((acc, cur) => {
