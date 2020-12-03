@@ -1,17 +1,5 @@
 const inputArr = require("./input3.json");
 
-// const rawArr = `..##.......
-// #...#...#..
-// .#....#..#.
-// ..#.#...#.#
-// .#...##..#.
-// ..#.##.....
-// .#.#.#....#
-// .#........#
-// #.##...#...
-// #...##....#
-// .#..#...#.#`.split("\n");
-
 function countTrees(input, incX, incY) {
   const longInput = input.map((row) => {
     return row.repeat(Math.ceil(input.length / (input[0].length / incX)));
@@ -40,7 +28,6 @@ const values = [
 ];
 
 const result = values.reduce((acc, cur) => {
-  console.log(cur);
   return acc * countTrees(inputArr, cur[0], cur[1]);
 }, 1);
 
