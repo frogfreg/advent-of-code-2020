@@ -1,7 +1,7 @@
 const inputArr = require("./input3.json");
 
 const longInputArr = inputArr.map((row) => {
-  return row.repeat(34);
+  return row.repeat(32);
 });
 
 function countTrees(input) {
