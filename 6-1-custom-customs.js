@@ -1,4 +1,8 @@
-const inputArr = require("./input6.json");
+const unprocessedInput = require("./input6.json");
+
+const inputArr = unprocessedInput.map((group) => {
+  return group.replace(/\n/gi, "");
+});
 
 function getGroupCount(groupString) {
   const groupArr = [...groupString];
